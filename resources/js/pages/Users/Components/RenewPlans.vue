@@ -48,7 +48,7 @@
 
                         <div v-if="form.plan_id === 'custom'" class="w-full mt-2">
                             <label for="remaining_classes" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Cantidad de clases</label>
-                            <TextInput
+                            <Input
                                 id="remaining_classes"
                                 type="number"
                                 class="mt-1 block w-full"
@@ -71,7 +71,7 @@
 <script setup>
 import { ref, defineProps,  watch,  defineEmits } from 'vue';
 import Dialog from 'primevue/dialog';
-import TextInput from '@/Components/TextInput.vue';
+import { Input } from '@/components/ui/input';
 import Button from 'primevue/button';
 import { useForm } from '@inertiajs/vue3';
 import Swal from 'sweetalert2'
