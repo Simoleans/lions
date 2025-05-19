@@ -2,7 +2,7 @@
     <Dialog v-model:visible="props.open" modal header="Renovar Suscripción" :style="{ width: '50vw' }" :breakpoints="{ '1199px': '75vw', '575px': '90vw' }" :position="'bottom'" :close="closeRenewSubscription">
         <span class="text-surface-500 dark:text-surface-400 block mb-8">Renovar la suscripción de {{ user?.name }}.</span>
         <div class="col-span-2">
-            <InputLabel value="Plan" class="mb-2" />
+            <label for="id_number" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Plan</label>
             <ul class="grid w-full gap-6 md:grid-cols-3">
                 <li v-for="plan in user.plans" :key="plan.value">
                     <input
@@ -47,7 +47,7 @@
                         <div class="text-lg font-semibold mb-3">Días Personalizados</div>
 
                         <div v-if="form.plan_id === 'custom'" class="w-full mt-2">
-                            <InputLabel for="remaining_classes" value="Cantidad de clases" />
+                            <label for="remaining_classes" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Cantidad de clases</label>
                             <TextInput
                                 id="remaining_classes"
                                 type="number"
@@ -71,7 +71,6 @@
 <script setup>
 import { ref, defineProps,  watch,  defineEmits } from 'vue';
 import Dialog from 'primevue/dialog';
-import InputLabel from '@/Components/InputLabel.vue';
 import TextInput from '@/Components/TextInput.vue';
 import Button from 'primevue/button';
 import { useForm } from '@inertiajs/vue3';

@@ -4,8 +4,6 @@
 //import PrimaryButton from '@/Components/PrimaryButton.vue';
 //import TextInput from '@/Components/TextInput.vue';
 import { Link, useForm, usePage } from '@inertiajs/vue3';
-import Swal from 'sweetalert2'
-import InputError from '@/components/InputError.vue';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -90,7 +88,7 @@ const handleStore = () => {
                         autocomplete="id_number"
                     />
 
-                    <InputError class="mt-2" :message="form.errors.id_number" />
+
                 </div>
 
                 <div>
@@ -104,7 +102,7 @@ const handleStore = () => {
                         autocomplete="name"
                     />
 
-                    <InputError class="mt-2" :message="form.errors.name" />
+                    <span v-if="form.errors.name" class="mt-2 text-sm text-red-600">{{ form.errors.name }}</span>
                 </div>
 
                 <div>
@@ -118,7 +116,7 @@ const handleStore = () => {
                         autocomplete="username"
                     />
 
-                    <InputError class="mt-2" :message="form.errors.email" />
+                    <span v-if="form.errors.email" class="mt-2 text-sm text-red-600">{{ form.errors.email }}</span>
                 </div>
 
                 <div>
@@ -132,7 +130,7 @@ const handleStore = () => {
                         autocomplete="phone"
                     />
 
-                    <InputError class="mt-2" :message="form.errors.phone" />
+                    <span v-if="form.errors.phone" class="mt-2 text-sm text-red-600">{{ form.errors.phone }}</span>
                 </div>
 
                 <div>
@@ -152,7 +150,7 @@ const handleStore = () => {
                         <option value="otros">Otros</option>
                     </select>
 
-                    <InputError class="mt-2" :message="form.errors.allergy" />
+                    <span v-if="form.errors.allergy" class="mt-2 text-sm text-red-600">{{ form.errors.allergy }}</span>
                 </div>
 
                 <div>
@@ -165,7 +163,7 @@ const handleStore = () => {
                         autocomplete="injury"
                     />
 
-                    <InputError class="mt-2" :message="form.errors.injury" />
+                    <span v-if="form.errors.injury" class="mt-2 text-sm text-red-600">{{ form.errors.injury }}</span>
                 </div>
 
                 <div>
@@ -176,7 +174,7 @@ const handleStore = () => {
                         <option value="2">Cliente</option>
                     </select>
 
-                    <InputError class="mt-2" :message="form.errors.role" />
+                    <span v-if="form.errors.role" class="mt-2 text-sm text-red-600">{{ form.errors.role }}</span>
                 </div>
 
                 <div>
@@ -190,7 +188,7 @@ const handleStore = () => {
                         autocomplete="start_date"
                     />
 
-                    <InputError class="mt-2" :message="form.errors.start_date" />
+                    <span v-if="form.errors.start_date" class="mt-2 text-sm text-red-600">{{ form.errors.start_date }}</span>
                 </div>
 
                 <div class="col-span-2">
@@ -249,14 +247,14 @@ const handleStore = () => {
                                         min="1"
                                         required
                                     />
-                                    <InputError class="mt-2" :message="form.errors.remaining_classes" />
+                                    <span v-if="form.errors.remaining_classes" class="mt-2 text-sm text-red-600">{{ form.errors.remaining_classes }}</span>
                                 </div>
                             </label>
                         </li>
                     </ul>
 
 
-                    <InputError class="mt-2" :message="form.errors.plan" />
+                    <span v-if="form.errors.plan" class="mt-2 text-sm text-red-600">{{ form.errors.plan }}</span>
                 </div>
             </div> <!-- fin grid -->
 

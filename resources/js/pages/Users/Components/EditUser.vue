@@ -24,7 +24,7 @@
                     >
                         <div class="grid grid-cols-2 gap-4">
                             <div>
-                                <InputLabel for="id_number" value="Cédula" />
+                                <label for="id_number" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Cédula</label>
 
                                 <TextInput
                                     id="id_number"
@@ -35,11 +35,11 @@
                                     autocomplete="id_number"
                                 />
 
-                                <InputError class="mt-2" :message="form.errors.id_number" />
+                                <span v-if="form.errors.id_number" class="mt-2 text-sm text-red-600">{{ form.errors.id_number }}</span>
                             </div>
 
                             <div>
-                                <InputLabel for="name" value="Nombre" />
+                                <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Nombre</label>
                                 <TextInput
                                     id="name"
                                     type="text"
@@ -49,11 +49,11 @@
                                     autocomplete="name"
                                 />
 
-                                <InputError class="mt-2" :message="form.errors.name" />
+                                <span v-if="form.errors.name" class="mt-2 text-sm text-red-600">{{ form.errors.name }}</span>
                             </div>
 
                             <div>
-                                <InputLabel for="email" value="Email" />
+                                <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
                                 <TextInput
                                     id="email"
                                     type="email"
@@ -63,11 +63,11 @@
                                     autocomplete="username"
                                 />
 
-                                <InputError class="mt-2" :message="form.errors.email" />
+                                <span v-if="form.errors.email" class="mt-2 text-sm text-red-600">{{ form.errors.email }}</span>
                             </div>
 
                             <div>
-                                <InputLabel for="phone" value="Teléfono" />
+                                <label for="phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Teléfono</label>
                                 <TextInput
                                     id="phone"
                                     type="text"
@@ -77,11 +77,11 @@
                                     autocomplete="phone"
                                 />
 
-                                <InputError class="mt-2" :message="form.errors.phone" />
+                                <span v-if="form.errors.phone" class="mt-2 text-sm text-red-600">{{ form.errors.phone }}</span>
                             </div>
 
                             <div>
-                                <InputLabel for="allergy" value="Alergia" />
+                                <label for="allergy" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Alergia</label>
                                 <!-- select option alergy-->
                                 <select id="allergy" class="mt-1 block w-full" v-model="form.allergy" autocomplete="allergy">
                                     <option value="" :selected="form.allergy === null">Selecciona una opción</option>
@@ -97,11 +97,11 @@
                                     <option value="otros">Otros</option>
                                 </select>
 
-                                <InputError class="mt-2" :message="form.errors.allergy" />
+                                <span v-if="form.errors.allergy" class="mt-2 text-sm text-red-600">{{ form.errors.allergy }}</span>
                             </div>
 
                             <div>
-                                <InputLabel for="injury" value="Lesión" />
+                                <label for="injury" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Lesión</label>
                                 <TextInput
                                     id="injury"
                                     type="text"
@@ -110,36 +110,11 @@
                                     autocomplete="injury"
                                 />
 
-                                <InputError class="mt-2" :message="form.errors.injury" />
+                                <span v-if="form.errors.injury" class="mt-2 text-sm text-red-600">{{ form.errors.injury }}</span>
                             </div>
-
-                            <!-- <div>
-                                <InputLabel for="role" value="Rol" />
-                                <select id="role" class="mt-1 block w-full" v-model="form.role" required autocomplete="role">
-                                    <option value="">Selecciona un rol</option>
-                                    <option value="1">Administrador</option>
-                                    <option value="2">Cliente</option>
-                                </select>
-
-                                <InputError class="mt-2" :message="form.errors.role" />
-                            </div>
-
-                            <div>
-                                <InputLabel for="start_date" value="Fecha de inicio" />
-                                <TextInput
-                                    id="start_date"
-                                    type="date"
-                                    class="mt-1 block w-full"
-                                    v-model="form.start_date"
-                                    required
-                                    autocomplete="start_date"
-                                />
-
-                                <InputError class="mt-2" :message="form.errors.start_date" />
-                            </div> -->
 
                             <div class="col-span-2">
-                                <InputLabel value="Plan" class="mb-2" />
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Plan</label>
 
                                 <ul class="grid w-full gap-6 md:grid-cols-3">
                                     <li v-for="plan in user.plans" :key="plan.value">
@@ -183,7 +158,7 @@
                                             <div class="text-lg font-semibold mb-3">Días Personalizados</div>
 
                                             <div v-if="form.plan_id === 'custom'" class="w-full mt-2">
-                                                <InputLabel for="remaining_classes" value="Cantidad de clases" />
+                                                <label for="remaining_classes" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Cantidad de clases</label>
                                                 <TextInput
                                                     id="remaining_classes"
                                                     type="number"
@@ -192,17 +167,15 @@
                                                     min="1"
                                                     required
                                                 />
-                                                <InputError class="mt-2" :message="form.errors.remaining_classes" />
+                                                <span v-if="form.errors.remaining_classes" class="mt-2 text-sm text-red-600">{{ form.errors.remaining_classes }}</span>
                                             </div>
                                         </label>
                                     </li>
                                 </ul>
 
-
-                                <InputError class="mt-2" :message="form.errors.plan" />
+                                <span v-if="form.errors.plan" class="mt-2 text-sm text-red-600">{{ form.errors.plan }}</span>
                             </div>
                         </div> <!-- fin grid -->
-
 
                         <div class="flex items-center gap-4">
                             <PrimaryButton :disabled="form.processing || !isFormValid">Guardar</PrimaryButton>
@@ -232,14 +205,9 @@
 
 <script setup>
 import { ref, defineProps, defineEmits, onMounted, watch } from 'vue';
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
-import { Link, useForm, usePage } from '@inertiajs/vue3';
-import Swal from 'sweetalert2'
-
-
+import { Link, useForm } from '@inertiajs/vue3';
 
 const props = defineProps({
     open: { type: Boolean, required: true },
@@ -278,7 +246,6 @@ watch(() => props.user, (newUser) => {
         form.remaining_classes = newUser.remaining_classes;
     }
 }, { deep: true, immediate: true });
-
 
 const containerTop = ref(0);
 onMounted(() => {

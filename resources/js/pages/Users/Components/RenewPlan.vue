@@ -14,7 +14,7 @@
             </DialogHeader>
 
             <div class="col-span-2">
-            <InputLabel value="Plan" class="mb-2" />
+                <label for="id_number" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Plan</label>
             <ul class="grid w-full gap-6 md:grid-cols-2">
                 <li v-for="plan in user.plans" :key="plan.id">
                     <Input
@@ -95,7 +95,7 @@ import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, Dialog
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { ref, watch, onMounted } from 'vue'
+import { ref, watch } from 'vue'
 import { useNotifications } from '@/composables/useNotifications'
 
 const { notify } = useNotifications()
