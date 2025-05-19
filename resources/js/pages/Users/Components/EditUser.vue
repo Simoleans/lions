@@ -178,7 +178,7 @@
                         </div> <!-- fin grid -->
 
                         <div class="flex items-center gap-4">
-                            <PrimaryButton :disabled="form.processing || !isFormValid">Guardar</PrimaryButton>
+                            <Button variant="default" :disabled="form.processing || !isFormValid">Guardar</Button>
                             <Link :href="route('dashboard')" class="text-sm text-gray-600 dark:text-gray-400">Cancelar</Link>
 
                             <Transition
@@ -205,7 +205,7 @@
 
 <script setup>
 import { ref, defineProps, defineEmits, onMounted, watch } from 'vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
+import { Button } from '@/components/ui/button';
 import TextInput from '@/Components/TextInput.vue';
 import { Link, useForm } from '@inertiajs/vue3';
 
