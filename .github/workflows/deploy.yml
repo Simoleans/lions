@@ -23,7 +23,7 @@ jobs:
           npm install
           npm run build
 
-      - name: Upload Laravel Core to firma_abogados
+      - name: Upload Laravel Core to app-lions
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: bh8956.banahosting.com
