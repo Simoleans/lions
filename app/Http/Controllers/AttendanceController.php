@@ -91,6 +91,27 @@ class AttendanceController extends Controller
         ]);
 
         $user = User::where('id_number', $request->code)->first();
+
+        if (!$user) {
+            return response()->json([
+                'error' => true,
+                'message' => 'Usuario no encontrado'
+            ]);
+        }
+
+        // Check if user already has attendance for today
+        $todayAttendance = Attendance::where('user_id', $user->id)
+            ->whereDate('attended_at', Carbon::now()->format('Y-m-d'))
+            ->first();
+
+        if ($todayAttendance) {
+            return response()->json([
+                'error' => true,
+                'message' => 'Ya registraste tu asistencia hoy',
+                'user' => $user
+            ]);
+        }
+
         $attendance_count = Attendance::where('user_id', $user->id)->count();
 
         if ($attendance_count >= $user->subscriptions->first()->remaining_classes) {
@@ -101,15 +122,9 @@ class AttendanceController extends Controller
             ]);
         }
 
-        //dd($user,$user->subscriptions->first()->id);
-
-        if (!$user) {
-            return redirect()->back()->with('error', 'Usuario no encontrado');
-        }
-
         Attendance::create([
             'user_id' => $user->id,
-            'subscription_id' => $user->subscriptions->id,
+            'subscription_id' => $user->subscriptions->first()->id,
             'date' => now(),
         ]);
 
