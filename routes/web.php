@@ -9,6 +9,7 @@ use App\Http\Controllers\{
 };
 
 Route::get('/', function () {
+    dd("ssss");
     return Inertia::render('Welcome');
 })->name('home');
 
