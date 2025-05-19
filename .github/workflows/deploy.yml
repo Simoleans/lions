@@ -1,0 +1,73 @@
+name: 🚀 Full Deploy Laravel (Gestion Abogados)
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy Gestion Abogados
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install PHP dependencies
+        run: |
+          composer install --no-dev --optimize-autoloader
+
+      - name: Build frontend assets
+        run: |
+          npm install
+          npm run build
+
+      - name: Upload Laravel Core to firma_abogados
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: bh8956.banahosting.com
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./
+          server-dir: /firma_abogados/
+          exclude: |
+            **/node_modules/**
+            **/vendor/**
+            **/public/build/**
+            **/tests/**
+            **/storage/logs/**
+            **/storage/framework/cache/**
+            **/storage/framework/sessions/**
+            **/storage/framework/views/**
+            **/.git/**
+            **/.github/**
+            vite.config.js
+            webpack.mix.js
+            tailwind.config.js
+            yarn.lock
+            package-lock.json
+            package.json
+            deploy.php
+
+      - name: Upload Vite build to firma_abogados/public/build
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: bh8956.banahosting.com
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./public/build/
+          server-dir: /firma_abogados/public/build/
+
+      - name: Upload Vite build to public_html/build
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: bh8956.banahosting.com
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./public/build/
+          server-dir: /public_html/build/
+
+      - name: Ejecutar deploy.php con clave
+        run: |
+          curl -s "https://gestioncasostownshend.com/deploy.php?key=${{ secrets.DEPLOY_SECRET_KEY }}"
