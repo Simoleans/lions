@@ -1,13 +1,13 @@
 <script setup>
-import { Head, Link } from '@inertiajs/vue3';
-import Header from '@/Components/Landing/Header.vue';
+import { Head } from '@inertiajs/vue3';
+import Header from '@/components/Landing/Header.vue';
 import { ref } from 'vue';
-import Beneficios from '@/Components/Landing/Beneficios.vue';
-import Home from '@/Components/Landing/Home.vue';
-import Quote from '@/Components/Landing/Quote.vue';
-import Plans from '@/Components/Landing/Plans.vue';
-import FAQ from '@/Components/Landing/FAQ.vue';
-import Footer from '@/Components/Landing/Footer.vue';
+import Beneficios from '@/components/Landing/Beneficios.vue';
+import Home from '@/components/Landing/Home.vue';
+import Quote from '@/components/Landing/Quote.vue';
+import Plans from '@/components/Landing/Plans.vue';
+import FAQ from '@/components/Landing/FAQ.vue';
+import Footer from '@/components/Landing/Footer.vue';
 import lightGallery from "lightgallery";
 import lgZoom from "lightgallery/plugins/zoom";
 import 'lightgallery/css/lightgallery.css';
