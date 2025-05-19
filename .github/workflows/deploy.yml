@@ -1,4 +1,4 @@
-name: 🚀 Full Deploy Laravel (Gestion Abogados)
+name: 🚀 Full Deploy Laravel (Lions Gym)
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    name: Deploy Gestion Abogados
+    name: Deploy Lions Gym
 
     steps:
       - name: Checkout code
@@ -30,7 +30,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./
-          server-dir: /firma_abogados/
+          server-dir: /app-lions/
           exclude: |
             **/node_modules/**
             **/vendor/**
@@ -50,14 +50,14 @@ jobs:
             package.json
             deploy.php
 
-      - name: Upload Vite build to firma_abogados/public/build
+      - name: Upload Vite build to app-lions/public/build
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: bh8956.banahosting.com
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./public/build/
-          server-dir: /firma_abogados/public/build/
+          server-dir: /app-lions/public/build/
 
       - name: Upload Vite build to public_html/build
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
