@@ -25,8 +25,7 @@
                         <div class="grid grid-cols-2 gap-4">
                             <div>
                                 <label for="id_number" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Cédula</label>
-
-                                <TextInput
+                                <Input
                                     id="id_number"
                                     type="text"
                                     class="mt-1 block w-full"
@@ -35,12 +34,13 @@
                                     autocomplete="id_number"
                                 />
 
+
                                 <span v-if="form.errors.id_number" class="mt-2 text-sm text-red-600">{{ form.errors.id_number }}</span>
                             </div>
 
                             <div>
                                 <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Nombre</label>
-                                <TextInput
+                                <Input
                                     id="name"
                                     type="text"
                                     class="mt-1 block w-full"
@@ -54,7 +54,7 @@
 
                             <div>
                                 <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
-                                <TextInput
+                                <Input
                                     id="email"
                                     type="email"
                                     class="mt-1 block w-full"
@@ -68,7 +68,7 @@
 
                             <div>
                                 <label for="phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Teléfono</label>
-                                <TextInput
+                                <Input
                                     id="phone"
                                     type="text"
                                     class="mt-1 block w-full"
@@ -102,7 +102,7 @@
 
                             <div>
                                 <label for="injury" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Lesión</label>
-                                <TextInput
+                                <Input
                                     id="injury"
                                     type="text"
                                     class="mt-1 block w-full"
@@ -159,7 +159,7 @@
 
                                             <div v-if="form.plan_id === 'custom'" class="w-full mt-2">
                                                 <label for="remaining_classes" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Cantidad de clases</label>
-                                                <TextInput
+                                                <Input
                                                     id="remaining_classes"
                                                     type="number"
                                                     class="mt-1 block w-full"
@@ -206,7 +206,7 @@
 <script setup>
 import { ref, defineProps, defineEmits, onMounted, watch } from 'vue';
 import { Button } from '@/components/ui/button';
-import TextInput from '@/Components/TextInput.vue';
+import { Input } from '@/components/ui/input';
 import { Link, useForm } from '@inertiajs/vue3';
 
 const props = defineProps({
