@@ -2,9 +2,9 @@
 import AppLayout from '@/layouts/AppLayout.vue';
 import { Head } from '@inertiajs/vue3';
 import { type BreadcrumbItem } from '@/types';
-import CalendarAttendance from './components/CalendarAttendance.vue';
+import CalendarAttendance from './Components/CalendarAttendance.vue';
 import QRCodeVue3 from 'qrcode-vue3';
-import { ref, reactive } from 'vue';
+import {  reactive } from 'vue';
 import { BarChart, PieChart } from 'vue-chart-3';
 import Swal from 'sweetalert2';
 import RenewPlan from './Components/RenewPlan.vue';
