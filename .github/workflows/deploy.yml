@@ -59,15 +59,15 @@ jobs:
           local-dir: ./public/build/
           server-dir: /app-lions/public/build/
 
-      - name: Upload Vite build to public_html/build
+      - name: Upload Vite build to lions.futfran.com/build
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: bh8956.banahosting.com
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./public/build/
-          server-dir: /public_html/build/
+          server-dir: /lions.futfran.com/build/
 
       - name: Ejecutar deploy.php con clave
         run: |
-          curl -s "https://gestioncasostownshend.com/deploy.php?key=${{ secrets.DEPLOY_SECRET_KEY }}"
+          curl -s "https://lions.futfran.com/deploy.php?key=${{ secrets.DEPLOY_SECRET_KEY }}"
